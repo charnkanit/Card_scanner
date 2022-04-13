@@ -10,6 +10,7 @@ cap = cv2.VideoCapture(2)
 cap.set(10,50)
 heightImg = 612
 widthImg  = 972
+kernel = np.ones((5,5))  
 ########################################################################
  
 utlis.initializeTrackbars()
@@ -25,7 +26,7 @@ while True:
     imgBlur = cv2.GaussianBlur(imgGray, (5, 5), 1) # ADD GAUSSIAN BLUR
     thres=utlis.valTrackbars() # GET TRACK BAR VALUES FOR THRESHOLDS
     imgThreshold = cv2.Canny(imgBlur,thres[0],thres[1]) # APPLY CANNY BLUR
-    kernel = np.ones((5, 5))
+        
     imgDial = cv2.dilate(imgThreshold, kernel, iterations=2) # APPLY DILATION
     imgThreshold = cv2.erode(imgDial, kernel, iterations=1)  # APPLY EROSION
  
