@@ -14,8 +14,7 @@ namespace Card_scanner
         UMat dilate = new UMat();
         UMat erode = new UMat();
         Mat hier = new Mat();
-        Image<Bgr, Byte> cpImg;
-        Emgu.CV.Util.VectorOfVectorOfPoint contour;
+        Emgu.CV.Util.VectorOfVectorOfPoint contour = null;
         int[,] kernel = new int[,] { { 1,1,1,1,1},
                                      { 1,1,1,1,1},
                                      { 1,1,1,1,1},
@@ -67,7 +66,7 @@ namespace Card_scanner
                     imageBox2.Image = canny;
                     btnScan.Text = "Apply Dilation";
                 }
-                else if(btnScan.Text == "Apply Dilation")
+                else if (btnScan.Text == "Apply Dilation")
                 {
                     dilate = toDilate(canny);
                     imageBox2.Image = dilate;
@@ -82,10 +81,30 @@ namespace Card_scanner
                 else if (btnScan.Text == "Find Contour")
                 {
                     (contour,hier) = findContour(erode);
-                    var layer = (int)contour.Size - 3;
-                    cpImg = img1;
-                    sortContour(contour, img1);
+                    Image<Bgr, Byte> cpImg = img1.Copy();
+                    CvInvoke.DrawContours(cpImg, contour, -1, new MCvScalar(255, 0, 0), 10);
+                    imageBox2.Image = cpImg;
                     btnScan.Text = "Find Biggest Contour";
+                }
+                else if (btnScan.Text == "Find Biggest Contour")
+                {
+                    sortContour(contour, img1);
+                    btnScan.Text = "Perspective crop";
+                }
+                else if (btnScan.Text == "Perspective crop")
+                {
+                    trackBar1.Enabled = false;
+                    trackBar2.Enabled = false;
+                    btnScan.Text = "Adaptive Threshold";
+                }
+                else if (btnScan.Text == "Adaptive Threshold")
+                {
+                    btnScan.Text = "Scan Card Info";
+                }
+                else if (btnScan.Text == "Scan Card Info")
+                {
+                    btnScan.Enabled = false;
+                    btnSave.Enabled = true;
                 }
             }
 
@@ -137,7 +156,7 @@ namespace Card_scanner
         public void sortContour(Emgu.CV.Util.VectorOfVectorOfPoint contour, Image<Bgr, Byte> image0)
         {
             Dictionary<int, double> dict  = new Dictionary<int, double>();
-
+            Dictionary<int, double> biggest = new Dictionary<int, double>();
             if (contour.Size > 0)
             {
                 for (int i = 0; i < contour.Size; i++)
@@ -148,10 +167,18 @@ namespace Card_scanner
             }
 
             var item = dict.OrderByDescending(v => v.Value).Take(3);
-            int key = int.Parse(item.Key.ToString());
+            int key = 0;
+            foreach (var it in item)
+            {
+                key = int.Parse(it.Key.ToString());
+            }
             CvInvoke.DrawContours(image0, contour, key, new MCvScalar(0, 255, 0), 10);
             imageBox2.Image = image0;
+        }
 
+        public static (float, float) setPers(Emgu.CV.Util.VectorOfVectorOfPoint contour, Image<Bgr, Byte> image0)
+        {
+            float pts1 = contour;
 
         }
 
