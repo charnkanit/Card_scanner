@@ -82,9 +82,9 @@ namespace Card_scanner
                 else if (btnScan.Text == "Find Contour")
                 {
                     (contour,hier) = findContour(erode);
+                    var layer = (int)contour.Size - 3;
                     cpImg = img1;
-                    CvInvoke.DrawContours(cpImg, contour, -1, new MCvScalar(255, 0, 0), 10);
-                    imageBox2.Image = cpImg;
+                    sortContour(contour, img1);
                     btnScan.Text = "Find Biggest Contour";
                 }
             }
@@ -130,8 +130,29 @@ namespace Card_scanner
         {
             Emgu.CV.Util.VectorOfVectorOfPoint contour = new Emgu.CV.Util.VectorOfVectorOfPoint();
             Mat hier = new Mat();
-            CvInvoke.FindContours(image0, contour, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
+            CvInvoke.FindContours(image0, contour, hier, Emgu.CV.CvEnum.RetrType.Tree, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
             return (contour,hier);
+        }
+        
+        public void sortContour(Emgu.CV.Util.VectorOfVectorOfPoint contour, Image<Bgr, Byte> image0)
+        {
+            Dictionary<int, double> dict  = new Dictionary<int, double>();
+
+            if (contour.Size > 0)
+            {
+                for (int i = 0; i < contour.Size; i++)
+                {
+                    double area = CvInvoke.ContourArea(contour[i]);
+                    dict.Add(i, area);
+                }
+            }
+
+            var item = dict.OrderByDescending(v => v.Value).Take(3);
+            int key = int.Parse(item.Key.ToString());
+            CvInvoke.DrawContours(image0, contour, key, new MCvScalar(0, 255, 0), 10);
+            imageBox2.Image = image0;
+
+
         }
 
         public void _Reset()
@@ -142,7 +163,7 @@ namespace Card_scanner
             canny = null;
             imageBox2.Image = null;
             btnScan.Text = "Convert to Gray";
-            trackBar1.Value = 200;
+            trackBar1.Value = 100;
             trackBar2.Value = 255;
             trackBar1.Enabled = false;
             trackBar2.Enabled = false;
