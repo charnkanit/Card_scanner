@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "e4xLN6HucaeCmi7+sKMluUQWWSrYlrjaV35mb/JMHlNYt7H9IvX45LeerIH/teiqkfmvJE2zUPhiG7Ifn8VjGg==",
+  "dgSpecHash": "d2ZbfvCXr9NsqFGpm6Y9aPjMN4uDiTV+EQvCWDJbClGeHpRfIZFY7fGfM1mUxcwijlnWL3ddG+Y1Sj5xiS/H5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\sin_c\\OneDrive\\Desktop\\CV_proj\\Card_scanner\\Card_scanner.csproj",
   "expectedPackageFiles": [
@@ -13,11 +13,13 @@
     "C:\\Users\\sin_c\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\sin_c\\.nuget\\packages\\numsharp\\0.30.0\\numsharp.0.30.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.drawing.primitives\\4.3.0\\system.drawing.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\sin_c\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\sin_c\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",

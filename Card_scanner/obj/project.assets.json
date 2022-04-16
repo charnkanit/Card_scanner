@@ -173,6 +173,18 @@
           }
         }
       },
+      "NumSharp/0.30.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/NumSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NumSharp.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -246,6 +258,15 @@
         },
         "compile": {
           "ref/netstandard1.5/_._": {}
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.Reflection/4.3.0": {
@@ -579,6 +600,20 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "NumSharp/0.30.0": {
+      "sha512": "1f8m2B/m/ZSsICaqLszspCyA9/sTHK7wBKEH5KsxGg/r3QCYTc2HnfYOGMeCytvo8/j0v/umn5umLOLhdExlFA==",
+      "type": "package",
+      "path": "numsharp/0.30.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/netstandard2.0/NumSharp.dll",
+        "lib/netstandard2.0/NumSharp.pdb",
+        "numsharp.0.30.0.nupkg.sha512",
+        "numsharp.nuspec"
+      ]
+    },
     "runtime.native.System/4.3.0": {
       "sha512": "c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
       "type": "package",
@@ -808,6 +843,29 @@
         "ref/xamarinwatchos10/_._",
         "system.io.4.3.0.nupkg.sha512",
         "system.io.nuspec"
+      ]
+    },
+    "System.Memory/4.5.4": {
+      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "type": "package",
+      "path": "system.memory/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Reflection/4.3.0": {
@@ -1613,7 +1671,8 @@
     "net6.0-windows7.0": [
       "Emgu.CV >= 4.5.5.4823",
       "Emgu.CV.UI >= 4.5.5.4823",
-      "Emgu.CV.runtime.windows >= 4.5.5.4823"
+      "Emgu.CV.runtime.windows >= 4.5.5.4823",
+      "NumSharp >= 0.30.0"
     ]
   },
   "packageFolders": {
@@ -1671,6 +1730,10 @@
           "Emgu.CV.runtime.windows": {
             "target": "Package",
             "version": "[4.5.5.4823, )"
+          },
+          "NumSharp": {
+            "target": "Package",
+            "version": "[0.30.0, )"
           }
         },
         "imports": [

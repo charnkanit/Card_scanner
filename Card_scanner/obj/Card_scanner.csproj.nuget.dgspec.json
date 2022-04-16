@@ -55,6 +55,10 @@
             "Emgu.CV.runtime.windows": {
               "target": "Package",
               "version": "[4.5.5.4823, )"
+            },
+            "NumSharp": {
+              "target": "Package",
+              "version": "[0.30.0, )"
             }
           },
           "imports": [

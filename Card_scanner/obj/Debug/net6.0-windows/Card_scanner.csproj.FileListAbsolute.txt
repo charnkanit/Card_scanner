@@ -39,3 +39,4 @@ C:\Users\sin_c\OneDrive\Desktop\CV_proj\Card_scanner\bin\Debug\net6.0-windows\ru
 C:\Users\sin_c\OneDrive\Desktop\CV_proj\Card_scanner\bin\Debug\net6.0-windows\runtimes\win-x86\native\vcruntime140.dll
 C:\Users\sin_c\OneDrive\Desktop\CV_proj\Card_scanner\obj\Debug\net6.0-windows\Card_scanner.Properties.Resources.resources
 C:\Users\sin_c\OneDrive\Desktop\CV_proj\Card_scanner\obj\Debug\net6.0-windows\Card_scanner.csproj.CopyComplete
+C:\Users\sin_c\OneDrive\Desktop\CV_proj\Card_scanner\bin\Debug\net6.0-windows\NumSharp.dll

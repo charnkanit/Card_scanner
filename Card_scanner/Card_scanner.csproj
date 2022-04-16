@@ -12,6 +12,7 @@
     <PackageReference Include="Emgu.CV" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.UI" Version="4.5.5.4823" />
+    <PackageReference Include="NumSharp" Version="0.30.0" />
   </ItemGroup>
 
   <ItemGroup>
