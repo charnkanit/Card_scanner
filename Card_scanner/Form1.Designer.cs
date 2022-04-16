@@ -55,6 +55,10 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -333,14 +337,50 @@
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBox7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox7.Location = new System.Drawing.Point(606, 450);
+            this.textBox7.Location = new System.Drawing.Point(682, 400);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(310, 34);
+            this.textBox7.Size = new System.Drawing.Size(204, 34);
             this.textBox7.TabIndex = 18;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(598, 451);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 20);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "label9";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(598, 503);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 20);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "label10";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(759, 451);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 20);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "label11";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(759, 503);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 20);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "label12";
             // 
             // Form1
             // 
@@ -348,6 +388,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
@@ -407,5 +451,9 @@
         private Button button1;
         private TrackBar trackBar2;
         private TrackBar trackBar1;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
     }
 }

@@ -1,8 +1,10 @@
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
+using Emgu.CV.CvEnum;
 using NumSharp;
 using System.Diagnostics;
+
 namespace Card_scanner
 {
     public partial class Form1 : Form
@@ -11,12 +13,14 @@ namespace Card_scanner
         Image<Bgr, Byte> img1 = null;
         Image<Gray, Byte> gray = null;
         Image<Gray, Byte> gaus= null;
+        Image<Gray, Byte> cropped = null;
         UMat canny = new UMat();
         UMat dilate = new UMat();
         UMat erode = new UMat();
         Mat hier = new Mat();
         Emgu.CV.Util.VectorOfVectorOfPoint contour = null;
         Emgu.CV.Util.VectorOfPoint biggestContour = null;
+        float[,] pts1 = null, pts2 = null;
         int[,] kernel = new int[,] { { 1,1,1,1,1},
                                      { 1,1,1,1,1},
                                      { 1,1,1,1,1},
@@ -34,6 +38,7 @@ namespace Card_scanner
             {
                 imgPath = openFileDialog1.FileName;
                 img1 = new Image<Bgr, Byte>(imgPath);
+                //img1 = img1.Resize(imageBox1.Width,imageBox1.Height, Inter.Linear);
                 imageBox1.Image = img1;
             }
         }
@@ -95,7 +100,8 @@ namespace Card_scanner
                 }
                 else if (btnScan.Text == "Perspective crop")
                 {
-                    setPers(biggestContour, img1);
+                    (pts1, pts2, cropped) = setPers(biggestContour, gray);
+                    imageBox2.Image = cropped;
                     trackBar1.Enabled = false;
                     trackBar2.Enabled = false;
                     btnScan.Text = "Adaptive Threshold";
@@ -168,7 +174,6 @@ namespace Card_scanner
                     dict.Add(i, area);
                 }
             }
-
             var item = dict.OrderByDescending(v => v.Value).Take(3);
             int key = 0;
             foreach (var it in item)
@@ -180,21 +185,25 @@ namespace Card_scanner
             return contour[key];
         }
 
-        public static (double, double) setPers(Emgu.CV.Util.VectorOfPoint contour, Image<Bgr, Byte> image0)
+        public (float[,], float[,], Image<Gray, Byte>) setPers(Emgu.CV.Util.VectorOfPoint contour, Image<Gray, Byte> image0)
         {
             float width = image0.Width;
             float height = image0.Height;
             var cvt = contour.ToArray();
-            var p1 = cvt[0];
-            var p2 = cvt[1];
-            var p3 = cvt[2];
-            var p4 = cvt[3];
+            var p1 = cvt[2];
+            var p2 = cvt[3];
+            var p3 = cvt[0];
+            var p4 = cvt[1];
             float[,] scrp = { { p1.X, p1.Y }, { p2.X, p2.Y }, { p3.X, p3.Y }, { p4.X, p4.Y } };
             float[,] dstp = { { 0, 0 }, { width, 0 }, { 0, height }, { width, height } };
             Matrix<float> c1 = new Matrix<float>(scrp);
             Matrix<float> c2 = new Matrix<float>(dstp);
-            CvInvoke.GetPerspectiveTransform(c1, c2);
-            return (0.0, 0.0);
+            Mat matr = CvInvoke.GetPerspectiveTransform(c1, c2);
+            Image<Gray, Byte> res = image0.Copy();
+            CvInvoke.WarpPerspective(image0, res, matr, new Size(image0.Width, image0.Height));
+            label9.Text = res.Width.ToString();
+            label10.Text = res.Height.ToString();
+            return (scrp, dstp, res);
         }
 
         public void _Reset()
