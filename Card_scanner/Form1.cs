@@ -190,22 +190,37 @@ namespace Card_scanner
             float width = image0.Width;
             float height = image0.Height;
             var cvt = contour.ToArray();
-            var p1 = cvt[2];
-            var p2 = cvt[3];
-            var p3 = cvt[0];
-            var p4 = cvt[1];
-            float[,] scrp = { { p1.X, p1.Y }, { p2.X, p2.Y }, { p3.X, p3.Y }, { p4.X, p4.Y } };
-            float[,] dstp = { { 0, 0 }, { width, 0 }, { 0, height }, { width, height } };
+            float minX = (float)9999.9;
+            float maxX = (float)-9999.9;
+            float minY = (float)9999.9;
+            float maxY = (float)-9999.9;
+            foreach (var p in cvt)
+            {
+                if ((float)p.X > maxX)
+                    maxX = (float)p.X;
+                else if ((float)p.X < minX)
+                    minX = (float)p.X;
+                if ((float)p.Y > maxY)
+                    maxY = (float)p.Y;
+                else if ((float)p.Y < minY)
+                    minY = (float)p.Y;
+            }
+            //float[,] scrp = { { p1.X, p1.Y }, { p2.X, p2.Y }, { p3.X, p3.Y }, { p4.X, p4.Y } };
+            float[,] scrp = { { minX, minY }, { minX, maxY }, { maxX, maxY }, { maxX, minY } };
+            float[,] dstp = { { 0, 0 }, { 0, width }, { width, height }, { height, 0 } };
             Matrix<float> c1 = new Matrix<float>(scrp);
             Matrix<float> c2 = new Matrix<float>(dstp);
             Mat matr = CvInvoke.GetPerspectiveTransform(c1, c2);
             Image<Gray, Byte> res = image0.Copy();
             CvInvoke.WarpPerspective(image0, res, matr, new Size(image0.Width, image0.Height));
-            label9.Text = res.Width.ToString();
-            label10.Text = res.Height.ToString();
             return (scrp, dstp, res);
         }
 
+
+        public void corner(Emgu.CV.Util.VectorOfPoint contour, Image<Gray, Byte> image0)
+        {
+            var p0 = contour.argmin();
+        }
         public void _Reset()
         {
             img1 = null;
