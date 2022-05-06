@@ -4,7 +4,7 @@ A computer vision and artificial intelligence project to detect business card an
 
 ## Description
 
-This project is using YOLOV5 and Deep Sort Algorithm to perform object recognition and tracking realtime. 
+This project is using OpenCV, Pytesseract and FPDF python library to perform image processing from image of business card, then extract text the information and capture the card owner face. Then write down everything on PDF format.
 
 
 ### Try on Google Colab
